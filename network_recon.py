@@ -34,3 +34,13 @@ def main():
     print(Fore.YELLOW + "\n[*] Highlighting results from web content..." + Style.RESET_ALL)
     web_highlights = highlight_info(web_results)
     print(Fore.CYAN + json.dumps(web_highlights, indent=4) + Style.RESET_ALL)
+
+    print(Fore.YELLOW + "\n[*] Final combined results:" + Style.RESET_ALL)
+    combined_results = {
+        "Nmap Results": nmap_highlights,
+        "Web Content Results": web_highlights
+    }
+    print(Fore.CYAN + json.dumps(combined_results, indent=4) + Style.RESET_ALL)
+
+if __name__ == "__main__":
+    main()
