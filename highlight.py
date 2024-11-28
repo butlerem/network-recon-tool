@@ -13,10 +13,15 @@ keywords = {
     ]
 }
 
-# General patterns like IP/Domains
+# General patterns for common data types
 patterns = {
     "IP Address": r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b",
     "Domain": r"\b(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\b",
+    "Email Address": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
+    "File Path": r"(?:/[a-zA-Z0-9._-]+)+|[a-zA-Z]:\\[a-zA-Z0-9._\\-]+",
+    "Hash": r"\b[a-fA-F0-9]{32,128}\b",  # MD5, SHA-256, etc.
+    "CVE Reference": r"\bCVE-\d{4}-\d{4,7}\b",
+    "Banner": r"\b[a-zA-Z]+\b/[0-9.]+"
 }
 
 #Keyword-based patterns
@@ -27,7 +32,12 @@ patterns.update({
 
 category_colors = {
     "IP Address": Fore.BLUE,
-    "Domain": Fore.BLUE,
+    "Domain": Fore.CYAN,
+    "Email Address": Fore.LIGHTMAGENTA_EX,
+    "File Path": Fore.GREEN,
+    "Hash": Fore.MAGENTA,
+    "CVE Reference": Fore.LIGHTWHITE_EX,
+    "Banner": Fore.LIGHTBLUE_EX,
     "Usernames": Fore.YELLOW,
     "Passwords": Fore.RED,
     "Sensitive Terms": Fore.CYAN
