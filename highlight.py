@@ -7,7 +7,7 @@ def highlight_info(data):
         "Password": r"(?i)password:?\s*\w+",
         "Domain": r"\b(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\b"
     }
-    highlighted = {}
+    highlighted[key] = list(set(re.findall(pattern, data)))
     for key, pattern in patterns.items():
         highlighted[key] = re.findall(pattern, data)
     return highlighted
