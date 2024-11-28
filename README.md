@@ -25,18 +25,17 @@ The tool is modular, extensible, and outputs results in machine-readable and hum
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/auto_recon_tool.git
-   cd auto_recon_tool
+Clone the repository:
+```bash
+git clone https://github.com/yourusername/auto_recon_tool.git
+cd auto_recon_tool
+```
 Set up a virtual environment:
-
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 Install dependencies:
-
 ```bash
 pip install -r requirements.txt
 ```
