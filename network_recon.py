@@ -3,15 +3,20 @@ from colorama import Fore, Style
 import sys
 
 def main():
-    #Read raw output from stdin (pipe or paste)
-    print(Fore.YELLOW + "Paste or pipe the tool's output into this script. Press Ctrl+D (Linux/Mac) or Ctrl+Z (Windows) when done:" + Style.RESET_ALL)
-    try:
-        raw_output = sys.stdin.read()  # Read until EOF
-        if not raw_output.strip():
-            print(Fore.RED + "[!] No input provided. Exiting." + Style.RESET_ALL)
+    #Detect if input is piped or interactive
+    if not sys.stdin.isatty():  # Input is piped
+        raw_output = sys.stdin.read()
+    else:  # Interactive mode
+        print(Fore.YELLOW + "Paste the tool's output into this script. Press Ctrl+D (Linux/Mac) or Ctrl+Z (Windows) when done:" + Style.RESET_ALL)
+        try:
+            raw_output = sys.stdin.read()
+        except KeyboardInterrupt:
+            print(Fore.RED + "\n[!] Interrupted. Exiting." + Style.RESET_ALL)
             return
-    except KeyboardInterrupt:
-        print(Fore.RED + "\n[!] Interrupted. Exiting." + Style.RESET_ALL)
+
+    #Check if input was received
+    if not raw_output.strip():
+        print(Fore.RED + "[!] No input provided. Exiting." + Style.RESET_ALL)
         return
 
     #Display the original output
