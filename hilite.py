@@ -1,4 +1,5 @@
-from highlight import highlight_info, category_colors
+#!/usr/bin/env python3
+from patterns import highlight_info, category_colors
 from colorama import Fore, Style
 import sys
 

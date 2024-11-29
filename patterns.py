@@ -18,7 +18,7 @@ patterns = {
     "IP Address": r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b",
     "Domain": r"\b(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}\b",
     "Email Address": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
-    "File Path": r"(?:/[a-zA-Z0-9._-]+)+|[a-zA-Z]:\\[a-zA-Z0-9._\\-]+",
+    "File Path": r"(?:/[a-zA-Z0-9._-]+)+(?=\s|$|[.,:])",
     "Hash": r"\b[a-fA-F0-9]{32,128}\b",  # MD5, SHA-256, etc.
     "CVE Reference": r"\bCVE-\d{4}-\d{4,7}\b",
     "Banner": r"\b[a-zA-Z]+\b/[0-9.]+"
