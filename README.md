@@ -1,47 +1,73 @@
-# Automated Network Reconnaissance Tool
+# Automated Data Extraction for Pen Testing
 
 ## Overview
 
-The **Automated Reconnaissance Tool** is a Python-based utility designed for streamlined reconnaissance during penetration testing or cybersecurity assessments. It automates common reconnaissance tasks, such as:
+Hilite is a Python tool that extracts and highlights important information from scan results or logs. The tool works seamlessly with outputs from various scanning tools commonly used in security assessments to quickly parse relevant data.
 
-- **Port Scanning**: Identifies open ports and their services.
-- **Subdomain Enumeration**: Finds subdomains via brute force or DNS lookups.
-- **Banner Grabbing**: Retrieves service banners for version detection.
+## Features:
 
-The tool is modular, extensible, and outputs results in machine-readable and human-readable formats.
-
----
-
-## Features
-
-- Automated scanning for open ports and services.
-- Subdomain enumeration using brute force or DNS queries.
-- Banner grabbing for detected services.
-- Outputs results in structured formats like JSON.
-
----
-
-## Project Structure
+- Extracts and highlights IP addresses, domain names, email addresses, file paths, hashes, CVE references, usernames, passwords, and sensitive terms.
+- Supports both interactive and piped inputs.
+- Helps highlight key information in scan results from tools like Nmap, Whois, Nikto, CVE databases, and more.
 
 ## Installation
 
-Clone the repository:
+### Manual
+
+Download hilite.py and save it to a folder of your choice.
+
+Make the script executable (optional):
+
 ```bash
-git clone https://github.com/yourusername/auto_recon_tool.git
-cd auto_recon_tool
+chmod +x hilite.py
 ```
-Set up a virtual environment:
+
+Move the script to /usr/local/bin (optional, for global access):
+
+```bash
+sudo mv hilite.py /usr/local/bin/hilite
+```
+
+Run the tool:
+
+```bash
+    echo "Your scan output here" | hilite
+```
+
+Or
+
+### Use in a Python Virtual Environment
+
+Create a virtual environment and install the required package:
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+pip install colorama
 ```
-Install dependencies:
+
+Run hilite.py inside the virtual environment:
+
 ```bash
-pip install -r requirements.txt
+python hilite.py
 ```
 
-## Roadmap
-- Add API integrations for extended reconnaissance (e.g., Shodan, VirusTotal).
-- Build a web-based dashboard for interactive results.
-- Implement asynchronous scanning for improved performance.
+## Usage
 
+To use hilite during a scan, simply pipe the output of the scan tool (like nmap, whois, etc.) directly into the script. For example:
+
+```bash
+nmap -sV target.com | hilite
+```
+
+Or, if you haven't moved the script to /usr/local/bin, you can run it directly using:
+
+```bash
+echo "Your scan output here" | python3 hilite.py
+```
+
+This will automatically highlight and display critical information like IP addresses, usernames, passwords, file paths, CVE references, and more directly from the scan output.
+
+## License
+
+MIT License. See LICENSE file for more details.
