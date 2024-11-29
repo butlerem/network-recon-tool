@@ -4,11 +4,8 @@ import sys
 import re
 
 keywords = {
-    "Usernames": [
-        "admin", "administrator", "root", "guest", "test", "user", "manager", "sysadmin"
-    ],
-    "Sensitive Terms": [
-        "secret", "confidential", "token", "key", "internal", "private", "restricted", "password", "123456", "letmein", "qwerty", "admin123", "welcome", "changeme"
+    "Sensitive Keywords": [
+        "secret", "confidential", "token", "key", "internal", "private", "restricted", "password", "123456", "letmein", "qwerty", "admin123", "welcome", "changeme","admin", "administrator", "root", "guest", "test", "user", "manager", "sysadmin"
     ]
 }
 
@@ -21,7 +18,8 @@ patterns = {
     "Hash": r"\b[a-fA-F0-9]{32,128}\b",  # MD5, SHA-256, etc.
     "CVE Reference": r"\bCVE-\d{4}-\d{4,7}\b",
     "Banner": r"\b[a-zA-Z]+\b/[0-9.]+",
-    "Passwords": r"\b(?:password|p|pass|pwd)\s*[:=]\s*([a-zA-Z0-9!@#$%^&*()_+-]+)\b"
+    "Passwords": r"\b(?:password|p|pass|pwd)\s*[:=]\s*([a-zA-Z0-9!@#$%^&*()_+-]+)\b",
+    "Usernames": r"\b(?:login|user|username|u)\s*[:=]\s*([a-zA-Z0-9_]+)\b"
 }
 
 
@@ -33,15 +31,15 @@ patterns.update({
 
 category_colors = {
     "IP Address": Fore.BLUE,
-    "Domain": Fore.CYAN,
+    "Domain": Fore.GREEN,
     "Email Address": Fore.LIGHTMAGENTA_EX,
-    "File Path": Fore.GREEN,
-    "Hash": Fore.MAGENTA,
-    "CVE Reference": Fore.LIGHTWHITE_EX,
-    "Banner": Fore.LIGHTBLUE_EX,
-    "Usernames": Fore.YELLOW,
-    "Passwords": Fore.RED,
-    "Sensitive Terms": Fore.CYAN
+    "File Path": Fore.CYAN,
+    "Hash": Fore.BLUE,
+    "CVE Reference": Fore.GREEN,
+    "Banner": Fore.LIGHTMAGENTA_EX,
+    "Usernames": Fore.CYAN,
+    "Passwords": Fore.LIGHTMAGENTA_EX,
+    "Sensitive Keywords": Fore.GREEN
 }
 
 def highlight_info(data):
